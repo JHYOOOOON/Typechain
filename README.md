@@ -55,3 +55,77 @@ Study Typescript with Nomad Coders course
     const Hello = (person: Human): void => {
          console.log(`Hello, ${person.name}! You are ${person.job}:)`);
     }
+
+### **🏃‍♀️ 2일차**<br/>
+
+#### ✔️ 형식으로 배열 지정<br/>
+
+    const hello: string[] = ["hello"];
+
+- string[]
+  - hello는 string만 들어있는 배열 형식이라는 뜻
+  - 마찬가지로 class/interface도 이런 형태로 지정 가능
+    <br/>
+    <br/>
+
+#### ✔️ Class<br/>
+
+    class Block {
+      public index: number;
+      public hash: string;
+      public previousHash: string;
+      public data: string;
+      public timestamp: number;
+      ...
+    }
+
+- class 선언
+  - interface와 다르게 javascript에서 지원
+  - 접근제한자 public, private, protected로 설정 가능
+    <br/>
+    <br/>
+
+#### ✔️ class 내부 static 메소드 선언<br/>
+
+    class Block {
+        ...
+      static calculateBlockHash = (
+        index: number,
+        previousHash: string,
+        timestamp: number,
+        data: string
+      ): string =>
+        CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
+        ...
+    }
+
+- static 선언시 Block을 만들지 않고도 static 함수 호출 가능
+  <br/>
+  <br/>
+
+#### ✔️ Class constructor<br/>
+
+    class Block {
+        ...
+      constructor(
+        index: number,
+        hash: string,
+        previousHash: string,
+        data: string,
+        timestamp: number
+      ) {
+        this.index = index;
+        this.hash = hash;
+        this.previousHash = previousHash;
+        this.data = data;
+        this.timestamp = timestamp;
+      }
+    }
+
+    const newBlock: Block = new Block(
+      newIndex,
+      newHash,
+      previousBlock.hash,
+      data,
+      newTimestamp
+    );
